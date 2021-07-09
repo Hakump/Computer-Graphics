@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p>Put some sliders here</p>
+    <div>
+        <!-- the "block" display type causes the sliders to stack -->
+        <!--<input type="range" style="display: block">-->
+        <input id="bar1" type="range" style="display: block" min="0" max="100">
+        <input id="bar2" type="range" style="display: block" min="0" max="100">
+        <input id="bar3" type="range" style="display: block" min="0" max="200">
+    </div>
+</body>
+
+<script type="module">
+    window.onload = function () {
+        let bar1 = document.getElementById("bar1");
+        let bar2 = document.getElementById("bar2");
+        let bar3 = document.getElementById("bar3");
+
+        if (bar1 && bar2 && bar3){
+            bar1.oninput = function () {
+                bar3.value = bar1.value - bar2.value + 100;
+            };
+            bar2.oninput = function () {
+                bar3.value = bar1.value - bar2.value + 100;
+            };
+            bar3.oninput = tempMoving2;
+            function tempMoving(){
+                if (bar1.value === 0 || bar1.value === 100){
+                    bar2.value = bar1.value - bar3.value + 100;
+                } else {
+                    bar1.value = bar2.value + bar3.value - 100;
+                }
+            }
+            function tempMoving2() {
+                let temp = parseInt(bar2.value, 10) + parseInt(bar3.value, 10) - 100;
+                console.log(temp);
+                if (temp > 100){
+                    bar1.value = 100;
+                    //console.log(temp + " " + 1);
+                    bar2.value -= temp-100;
+                } else if (temp < 0){
+                    bar1.value = 0;
+                    //console.log(temp + " " + bar1.value + " " + bar2.value);
+                    bar2.value -= temp;
+                } else {
+                    bar1.value = temp;
+                }
+            }
+            function tempMoving3() {
+                let temp = parseInt(bar2.value, 10) + parseInt(bar3.value, 10) - 100;
+                //bar1.value = bar2.value + bar3.value - 100;
+                console.log(typeof bar2.value );
+                if (bar1.value > 100){
+                    bar2.value -= bar1.value-100;
+                    bar1.value = 100;
+                    //console.log(temp + " " + 1);
+                } else if (bar1.value < 0){
+                    bar2.value -= bar1.value;
+                    bar1.value = 0;
+                    //console.log(temp + " " + bar1.value + " " + bar2.value);
+                }
+            }
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,17 @@
+<!-- here is a big, empty SVG! make it into something interesting! -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="600px" width="600px">
+    <!-- you can delete this big rectangle - it's just a placeholder -->
+    <rect x="0" y="0" height="600" width="600" fill="#DDD" />
+
+    <g id = "ListBalls ">
+        <g id = "RedBalls">
+            <circle cx="50" cy="50" r="40" fill="#FD8" stroke-width="3"/>
+            <circle cx="50" cy="50" r="20" fill="blue" stroke-width="0"/>
+            <line x1="0" y1="50" x2="100" y2="50" stroke="black"/>
+        </g>
+        <use transform="translate(50,75.37)" stroke="black" xlink:href="#RedBalls" />
+        <use transform="translate(100,150.74)" stroke="green" xlink:href="#RedBalls" />
+        <use transform="translate(150,226.11)" stroke="red" xlink:href="#RedBalls" />
+        <polyline points="0,50 232.16,400 500,400" fill="none" stroke="black" />
+    </g>
+</svg>

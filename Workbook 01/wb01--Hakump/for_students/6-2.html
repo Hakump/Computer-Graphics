@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p>Put 2 buttons and a slider here</p>
+    <input id="bar1" type="range" min="0" max="100">
+    <button id = "start">Start</button>
+    <button id = "stop">Stop</button>
+
+</body>
+
+<script type="module">
+    // Put some code here
+    var start = 0;
+    function inf() {
+        let bar1 = document.getElementById("bar1");
+        bar1.value = ((Number(bar1.value) + start)%100).toString();
+        window.requestAnimationFrame(inf)
+
+    }
+    inf();
+
+    document.getElementById("start").addEventListener("click", startinf, false);
+    document.getElementById("stop").addEventListener("click", stopinf, false);
+    function startinf() {
+        start = 1;
+    }
+
+    function stopinf() {
+        start = 0;
+    }
+</script>
+</html>
